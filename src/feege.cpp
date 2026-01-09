@@ -1,7 +1,7 @@
 #include "feege.h"
 #include "ege_head.h"
 
-void ege_setclippath(const ege_path* path, PIMAGE pimg)
+void EGEAPI ege_setclippath(const ege_path* path, PIMAGE pimg)
 {
     PIMAGE img = CONVERT_IMAGE(pimg);
     if (img && path) {
@@ -16,7 +16,7 @@ void ege_setclippath(const ege_path* path, PIMAGE pimg)
     CONVERT_IMAGE_END;
 }
 
-void ege_resetclippath(PIMAGE pimg)
+void EGEAPI ege_resetclippath(PIMAGE pimg)
 {
     PIMAGE img = CONVERT_IMAGE(pimg);
     if (img) {
