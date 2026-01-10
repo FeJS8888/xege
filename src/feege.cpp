@@ -1,6 +1,9 @@
 #include "feege.h"
 #include "ege_head.h"
 
+namespace ege
+{
+
 void EGEAPI ege_setclippath(const ege_path* path, PIMAGE pimg)
 {
     PIMAGE img = CONVERT_IMAGE(pimg);
@@ -27,3 +30,5 @@ void EGEAPI ege_resetclippath(PIMAGE pimg)
     }
     CONVERT_IMAGE_END;
 }
+
+} // namespace ege
