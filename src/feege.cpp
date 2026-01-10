@@ -1,5 +1,6 @@
 #include "feege.h"
 #include "ege_head.h"
+#include "ege_common.h"
 
 namespace ege
 {
