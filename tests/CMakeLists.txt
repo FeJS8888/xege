@@ -62,6 +62,7 @@ add_test_executable(putimage_transparent_test tests/putimage_transparent_test.cp
 add_test_executable(putimage_rotate_test tests/putimage_rotate_test.cpp)
 add_test_executable(putimage_comparison_test tests/putimage_comparison_test.cpp)
 add_test_executable(putimage_alphablend_comprehensive_test tests/putimage_alphablend_comprehensive_test.cpp)
+add_test_executable(clippath_test tests/clippath_test.cpp)
 
 # 设置输出目录
 set_target_properties(
@@ -72,6 +73,7 @@ set_target_properties(
     putimage_rotate_test
     putimage_comparison_test
     putimage_alphablend_comprehensive_test
+    clippath_test
     PROPERTIES
     RUNTIME_OUTPUT_DIRECTORY ${CMAKE_BINARY_DIR}/bin
 )
@@ -85,3 +87,4 @@ add_test(NAME putimage_transparent COMMAND putimage_transparent_test)
 add_test(NAME putimage_rotate COMMAND putimage_rotate_test)
 add_test(NAME putimage_comparison COMMAND putimage_comparison_test)
 add_test(NAME putimage_alphablend_comprehensive COMMAND putimage_alphablend_comprehensive_test)
+add_test(NAME clippath_basic COMMAND clippath_test)
