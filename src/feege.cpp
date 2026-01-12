@@ -39,6 +39,7 @@ void apply_aaclip_mask(IMAGE* img, const IMAGE* backup, const Gdiplus::GraphicsP
     gdiplusinit();
 
     Gdiplus::Bitmap mask(width, height, PixelFormat32bppARGB);
+    Gdiplus::Rect   maskRect(0, 0, width, height);
     {
         Gdiplus::Graphics g(&mask);
         g.SetSmoothingMode(Gdiplus::SmoothingModeAntiAlias);
@@ -48,7 +49,7 @@ void apply_aaclip_mask(IMAGE* img, const IMAGE* backup, const Gdiplus::GraphicsP
     }
 
     Gdiplus::BitmapData maskData;
-    if (mask.LockBits(&Gdiplus::Rect(0, 0, width, height),
+    if (mask.LockBits(&maskRect,
             Gdiplus::ImageLockModeRead,
             PixelFormat32bppARGB,
             &maskData) != Gdiplus::Ok) {
@@ -57,8 +58,8 @@ void apply_aaclip_mask(IMAGE* img, const IMAGE* backup, const Gdiplus::GraphicsP
 
     BYTE*        maskRow = static_cast<BYTE*>(maskData.Scan0);
     const LONG   stride  = maskData.Stride;
-    color_t*     dst     = img->m_pBuffer;
-    const color_t* src   = backup->m_pBuffer;
+    color_t*     dst     = reinterpret_cast<color_t*>(img->m_pBuffer);
+    const color_t* src   = reinterpret_cast<const color_t*>(backup->m_pBuffer);
 
     for (int y = 0; y < height; ++y) {
         BYTE* row = maskRow + y * stride;
