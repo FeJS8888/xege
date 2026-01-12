@@ -144,11 +144,6 @@ void EGEAPI ege_beginaaclip(const ege_path* path, PIMAGE pimg)
             state.backup->copyimage(img);
             state.path.reset(graphicsPath->Clone());
             g_aaclip_states[img] = std::move(state);
-
-            Gdiplus::Graphics* graphics = img->getGraphics();
-            if (graphics) {
-                graphics->SetClip(graphicsPath, Gdiplus::CombineModeReplace);
-            }
         }
     }
     CONVERT_IMAGE_END;
@@ -162,10 +157,6 @@ void EGEAPI ege_endaaclip(PIMAGE pimg)
         if (it != g_aaclip_states.end()) {
             if (it->second.path && it->second.backup) {
                 apply_aaclip_mask(img, it->second.backup.get(), it->second.path.get());
-            }
-            Gdiplus::Graphics* graphics = img->getGraphics();
-            if (graphics) {
-                graphics->ResetClip();
             }
             g_aaclip_states.erase(it);
         }
