@@ -2,6 +2,7 @@
 #include "ege_head.h"
 #include "ege_common.h"
 
+// Helper defined in egegapi.cpp to construct rounded-rectangle GraphicsPath objects.
 Gdiplus::GraphicsPath* createRoundRectPath(float x, float y, float w, float h,
     float radius1, float radius2, float radius3, float radius4);
 
@@ -37,7 +38,9 @@ void EGEAPI ege_resetclippath(PIMAGE pimg)
 
 void EGEAPI ege_path_addroundrect(ege_path* path, float x, float y, float width, float height, float radius)
 {
-    ege_path_addroundrect(path, x, y, width, height, radius, radius, radius, radius);
+    if (path != NULL) {
+        ege_path_addroundrect(path, x, y, width, height, radius, radius, radius, radius);
+    }
 }
 
 void EGEAPI ege_path_addroundrect(ege_path* path, float x, float y, float width, float height,
