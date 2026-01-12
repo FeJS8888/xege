@@ -43,6 +43,7 @@ void apply_aaclip_mask(IMAGE* img, const IMAGE* backup, const Gdiplus::GraphicsP
     {
         Gdiplus::Graphics g(&mask);
         g.SetSmoothingMode(Gdiplus::SmoothingModeAntiAlias);
+        g.SetPixelOffsetMode(Gdiplus::PixelOffsetModeHalf);
         g.Clear(Gdiplus::Color(0, 0, 0, 0));
         Gdiplus::SolidBrush brush(Gdiplus::Color(255, 255, 255, 255));
         g.FillPath(&brush, path);
