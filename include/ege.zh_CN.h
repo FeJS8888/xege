@@ -3258,6 +3258,32 @@ void EGEAPI ege_path_addcircle     (ege_path* path, float x, float y, float radi
 void EGEAPI ege_path_addrect       (ege_path* path, float x, float y, float width, float height);
 
 /**
+ * @brief 向路径添加圆角矩形（统一圆角）
+ * @param path 路径对象指针
+ * @param x 矩形左上角x坐标
+ * @param y 矩形左上角y坐标
+ * @param width 矩形宽度
+ * @param height 矩形高度
+ * @param radius 圆角半径（应用到所有角）
+ */
+void EGEAPI ege_path_addroundrect  (ege_path* path, float x, float y, float width, float height, float radius);
+
+/**
+ * @brief 向路径添加圆角矩形（独立圆角半径）
+ * @param path 路径对象指针
+ * @param x 矩形左上角x坐标
+ * @param y 矩形左上角y坐标
+ * @param width 矩形宽度
+ * @param height 矩形高度
+ * @param radius1 左上角圆角半径
+ * @param radius2 右上角圆角半径
+ * @param radius3 右下角圆角半径
+ * @param radius4 左下角圆角半径
+ */
+void EGEAPI ege_path_addroundrect  (ege_path* path, float x, float y, float width, float height,
+    float radius1, float radius2, float radius3, float radius4);
+
+/**
  * @brief 向路径添加椭圆
  * @param path 路径对象指针
  * @param x 椭圆边界左上角x坐标

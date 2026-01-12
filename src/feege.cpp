@@ -2,6 +2,9 @@
 #include "ege_head.h"
 #include "ege_common.h"
 
+Gdiplus::GraphicsPath* createRoundRectPath(float x, float y, float w, float h,
+    float radius1, float radius2, float radius3, float radius4);
+
 namespace ege
 {
 
@@ -30,6 +33,26 @@ void EGEAPI ege_resetclippath(PIMAGE pimg)
         }
     }
     CONVERT_IMAGE_END;
+}
+
+void EGEAPI ege_path_addroundrect(ege_path* path, float x, float y, float width, float height, float radius)
+{
+    ege_path_addroundrect(path, x, y, width, height, radius, radius, radius, radius);
+}
+
+void EGEAPI ege_path_addroundrect(ege_path* path, float x, float y, float width, float height,
+    float radius1, float radius2, float radius3, float radius4)
+{
+    if (path != NULL) {
+        Gdiplus::GraphicsPath* graphicsPath = (Gdiplus::GraphicsPath*)path->data();
+        if (graphicsPath != NULL) {
+            Gdiplus::GraphicsPath* roundRect = createRoundRectPath(x, y, width, height, radius1, radius2, radius3, radius4);
+            if (roundRect != NULL) {
+                graphicsPath->AddPath(roundRect, false);
+                delete roundRect;
+            }
+        }
+    }
 }
 
 } // namespace ege
