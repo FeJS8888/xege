@@ -2,6 +2,9 @@
 #include "ege_head.h"
 #include "ege_common.h"
 
+namespace ege
+{
+
 static Gdiplus::GraphicsPath* createRoundRectPath(float x, float y, float w, float h,
     float radius1, float radius2, float radius3, float radius4)
 {
@@ -43,9 +46,6 @@ static Gdiplus::GraphicsPath* createRoundRectPath(float x, float y, float w, flo
 
     return path;
 }
-
-namespace ege
-{
 
 void EGEAPI ege_setclippath(const ege_path* path, PIMAGE pimg)
 {
