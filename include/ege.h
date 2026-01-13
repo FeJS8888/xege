@@ -3259,32 +3259,6 @@ void EGEAPI ege_path_addcircle     (ege_path* path, float x, float y, float radi
 void EGEAPI ege_path_addrect       (ege_path* path, float x, float y, float width, float height);
 
 /**
- * @brief Add rounded rectangle to path (uniform corner radius)
- * @param path Path object pointer
- * @param x Rectangle top-left corner x coordinate
- * @param y Rectangle top-left corner y coordinate
- * @param width Rectangle width
- * @param height Rectangle height
- * @param radius Corner radius (applied to all corners)
- */
-void EGEAPI ege_path_addroundrect  (ege_path* path, float x, float y, float width, float height, float radius);
-
-/**
- * @brief Add rounded rectangle to path (independent corner radii)
- * @param path Path object pointer
- * @param x Rectangle top-left corner x coordinate
- * @param y Rectangle top-left corner y coordinate
- * @param width Rectangle width
- * @param height Rectangle height
- * @param radius1 Top-left corner radius
- * @param radius2 Top-right corner radius
- * @param radius3 Bottom-right corner radius
- * @param radius4 Bottom-left corner radius
- */
-void EGEAPI ege_path_addroundrect  (ege_path* path, float x, float y, float width, float height,
-    float radius1, float radius2, float radius3, float radius4);
-
-/**
  * @brief Add ellipse to path
  * @param path Path object pointer
  * @param x Ellipse bounding top-left corner x coordinate

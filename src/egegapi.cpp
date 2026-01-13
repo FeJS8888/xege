@@ -1978,7 +1978,7 @@ void ege_fillrect(float x, float y, float w, float h, PIMAGE pimg)
     CONVERT_IMAGE_END;
 }
 
-Gdiplus::GraphicsPath* createRoundRectPath(float x, float y, float w, float h,
+static Gdiplus::GraphicsPath* createRoundRectPath(float x, float y, float w, float h,
     float radius1, float radius2, float radius3, float radius4)
 {
     if ((w <= 0.0f) || (h <= 0.0f))
