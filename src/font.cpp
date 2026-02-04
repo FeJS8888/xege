@@ -340,16 +340,12 @@ void measuretext(const wchar_t* text, float* width, float* height, PCIMAGE pimg)
 
         StringFormat* format = StringFormat::GenericTypographic()->Clone();
         switch (img->m_texttype.horiz) {
-        case LEFT_TEXT:   format->SetAlignment(StringAlignmentNear);    break;
-        case CENTER_TEXT: format->SetAlignment(StringAlignmentCenter);  break;
-        case RIGHT_TEXT:  format->SetAlignment(StringAlignmentFar);     break;
-        default: break;
+            case LEFT_TEXT:   format->SetAlignment(StringAlignmentNear);    break;
+            case CENTER_TEXT: format->SetAlignment(StringAlignmentCenter);  break;
+            case RIGHT_TEXT:  format->SetAlignment(StringAlignmentFar);     break;
+            default: break;
         }
-        
-        // Match the behavior in ege_drawtext_p: only measure trailing spaces for non-left alignment
-        if (img->m_texttype.horiz != LEFT_TEXT) {
-            format->SetFormatFlags(format->GetFormatFlags() | StringFormatFlagsMeasureTrailingSpaces);
-        }
+        format->SetFormatFlags(format->GetFormatFlags() | StringFormatFlagsMeasureTrailingSpaces);
 
         int textLength = (int)wcslen(text);
         
