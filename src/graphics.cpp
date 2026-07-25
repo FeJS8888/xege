@@ -459,7 +459,7 @@ static void on_key(struct _graph_setting* pg, UINT message, unsigned long keycod
 {
     /* https://learn.microsoft.com/en-us/windows/win32/inputdev/wm-keydown */
     unsigned msg = 0;
-    if (message == WM_KEYDOWN && keycode < MAX_KEY_VCODE) {
+    if ((message == WM_KEYDOWN || message == WM_SYSKEYDOWN) && keycode < MAX_KEY_VCODE) {
         msg                      = 1;
         pg->keystatemap[keycode] = true;
 
@@ -478,7 +478,7 @@ static void on_key(struct _graph_setting* pg, UINT message, unsigned long keycod
         }
 
     }
-    if (message == WM_KEYUP && keycode < MAX_KEY_VCODE) {
+    if ((message == WM_KEYUP || message == WM_SYSKEYUP) && keycode < MAX_KEY_VCODE) {
         pg->keystatemap[keycode] = false;
 
         if (pg->key_release_count[keycode] < UINT16_MAX) {
@@ -630,6 +630,8 @@ static LRESULT CALLBACK wndproc(HWND hWnd, UINT message, WPARAM wParam, LPARAM l
         }
         break;
     case WM_KEYDOWN:
+    case WM_SYSKEYDOWN:
+    case WM_SYSKEYUP:
     case WM_KEYUP:
     case WM_CHAR:
         // if (hWnd == pg->hwnd)
