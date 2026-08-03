@@ -84,6 +84,7 @@
 #define EGE_WNDCLSNAME_W EGE_L(EGE_WNDCLSNAME)
 
 #include <string>
+#include <thread>
 
 #ifdef EGE_GDIPLUS
 #   if defined(NOMINMAX) && defined(_MSC_VER)
@@ -98,6 +99,7 @@
 #endif
 
 #include "thread_queue.h"
+#include "sync/semaphore.h"
 
 #ifndef ERROR_SUCCESS
 #define ERROR_SUCCESS 0
@@ -165,7 +167,8 @@ class egeControlBase;   // egeControlBase 前置声明
 // 定义ege全局状态对象
 struct _graph_setting
 {
-    bool has_init;
+    Semaphore init_sem;
+
     bool unicode_char_message;
 
     struct _graph
@@ -209,7 +212,7 @@ struct _graph_setting
 
     thread_queue<EGEMSG>*msgkey_queue, *msgmouse_queue;
 
-    HANDLE threadui_handle;
+    std::thread threadui;
 
     /* 鼠标状态记录 */
     Point mouse_pos;
@@ -235,7 +238,6 @@ struct _graph_setting
 #ifdef EGE_GDIPLUS
     ULONG_PTR g_gdiplusToken;
 #endif
-    LARGE_INTEGER get_highfeq_time_start;
     DWORD         fclock_start;
     // double delay_dwLast;
     double delay_ms_dwLast;
@@ -251,6 +253,7 @@ struct _graph_setting
 
 public:
     _graph_setting();
+    ~_graph_setting();
 };
 
 template <typename T> struct count_ptr
