@@ -500,6 +500,7 @@ void measuretext(const wchar_t* text, float* width, float* height, PCIMAGE pimg)
         if (!useStoredFont) {
             delete fontPtr;
         }
+#endif
     }
 
     if (width != NULL)
@@ -1199,6 +1200,7 @@ static void ege_drawtext_p(const wchar_t* textstring, float x, float y, PIMAGE i
     if (!useStoredFont) {
         delete fontPtr;
     }
+#endif
 }
 
 void ege_setfont(float size, const char* typeface, PIMAGE pimg)

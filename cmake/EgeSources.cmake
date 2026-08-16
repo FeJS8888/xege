@@ -16,6 +16,7 @@ set(EGE_FRONTEND_SOURCES
     src/egegapi.cpp
     src/encodeconv.cpp
     src/font.cpp
+    src/feege.cpp
     src/gdi_conv.cpp
     src/graphics.cpp
     src/image.cpp
