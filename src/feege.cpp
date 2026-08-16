@@ -5,6 +5,7 @@
 namespace ege
 {
 
+#ifdef EGE_GDIPLUS
 static Gdiplus::GraphicsPath* createRoundRectPath(float x, float y, float w, float h,
     float radius1, float radius2, float radius3, float radius4)
 {
@@ -95,5 +96,6 @@ void EGEAPI ege_path_addroundrect(ege_path* path, float x, float y, float width,
         }
     }
 }
+#endif
 
 } // namespace ege
