@@ -1203,6 +1203,7 @@ static void ege_drawtext_p(const wchar_t* textstring, float x, float y, PIMAGE i
 #endif
 }
 
+#ifdef EGE_GDIPLUS
 void ege_setfont(float size, const char* typeface, PIMAGE pimg)
 {
     const char* validatedTypeface = typeface;
@@ -1309,5 +1310,5 @@ void ege_setfont(float size, const wchar_t* typeface, int style, PIMAGE pimg)
     }
     CONVERT_IMAGE_END;
 }
-
+#endif
 } // namespace ege
