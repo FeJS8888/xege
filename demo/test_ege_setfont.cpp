@@ -9,6 +9,7 @@
 
 int main()
 {
+#ifdef EGE_GDIPLUS
     // Initialize graphics window
     initgraph(800, 600);
     setbkcolor(WHITE);
@@ -27,5 +28,6 @@ int main()
     }
     
     closegraph();
+#endif
     return 0;
 }
