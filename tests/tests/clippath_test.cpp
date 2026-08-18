@@ -21,6 +21,5 @@ int main()
     setcolor(GREEN);
     setfillcolor(GREEN);
     ege_fillrect(0,0,800,600);
-    delay_ms(10000000);
     return 0;
 }
